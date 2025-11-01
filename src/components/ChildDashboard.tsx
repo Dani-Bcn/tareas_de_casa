@@ -160,12 +160,15 @@ export default function ChildDashboard() {
       </div>
     )
   }
+  {
+    console.log(user)
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4">
+    <div className="min-h-screen  from-pink-50 to-blue-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-purple-600 mb-2">🌟 Mis Tareas</h1>
+          <h1 className="text-3xl font-bold text-purple-600 mb-2 mt-20">🌟 Mis Tareas</h1>
           <p className="text-gray-600">
             ¡Hola {user.name}! 
             <span className="ml-2 text-2xl">{getGenderIcon(user.gender)}</span>
@@ -188,7 +191,7 @@ export default function ChildDashboard() {
         </div>
 
         {/* Tarjeta de perfil y puntos */}
-        <Card className="mb-8 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+        <Card className="mb-8 bg-linear-to-r from-purple-500 to-pink-500 text-white">
           <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
               <div>

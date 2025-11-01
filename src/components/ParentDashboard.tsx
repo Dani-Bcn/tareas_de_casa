@@ -295,6 +295,7 @@ export default function ParentDashboard() {
   const getChildAge = (child: Child): number => {
     return child.birthDate ? calculateAge(child.birthDate) : 0
   }
+  
   console.log(tasks)
 
   return (
