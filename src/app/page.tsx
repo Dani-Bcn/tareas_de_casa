@@ -133,7 +133,7 @@ export default function Home() {
     <div className="min-h-screen bg-linear-to-r from-blue-300 to-purple-300 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-600 mb-2">🌟 Tareas Mágicas</h1>
+          <h1 className="text-4xl font-bold text-purple-600 mb-2">🌟 Tareas de casa</h1>
           <p className="text-gray-600">¡Completa tareas y gana recompensas!</p>
         </div>
 

@@ -19,6 +19,10 @@ interface Task {
   completed: boolean
   childId: string
   childName: string
+   child?: {
+    id: string
+    name: string
+  }
 }
 
 interface Child {
@@ -467,12 +471,12 @@ export default function ParentDashboard() {
               <div className="text-center py-8">
                 <Baby className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <p className="text-gray-500">No tienes hijos agregados todavía</p>
-                <p className="text-sm text-gray-400">Haz clic en "Agregar Hijo" para comenzar</p>
+                <p className="text-sm text-gray-400 ">Haz clic en "Agregar Hijo" para comenzar</p>
               </div>
             ) : (
-              <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 duration-500 gap-4">
                 {children.map(child => (
-                  <Card key={child.id} className="bg-linear-to-t hover:shadow-xl/30 duration-250 from-green-100 to-slate-100  border-purple-200">
+                  <Card key={child.id} className="bg-linear-to-t  hover:shadow-xl/30 duration-250 from-green-100 to-slate-100  border-purple-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -600,7 +604,7 @@ export default function ParentDashboard() {
                 {tasks.length === 0 ? (
                   <p className="text-center text-gray-500 py-8">No hay tareas asignadas todavía</p>
                 ) : (
-                  tasks.map((task,key) => (
+                  tasks.map((task) => (
                     <div key={task.id} className="border rounded-lg p-4 bg-white bg-linear-to-t from-orange-200   to-slate-100">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
@@ -620,7 +624,7 @@ export default function ParentDashboard() {
                             <p className="text-sm text-gray-600 mb-2">{task.description}</p>
                           )}{
                             tasks && (
-                                <p className="text-sm text-gray-500">Asignada a: {tasks[key].child.name}</p>
+                                <p className="text-sm text-gray-500">Asignada a: {task.child?.name}</p>
                             )
                           }
                         
