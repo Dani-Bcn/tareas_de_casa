@@ -291,9 +291,10 @@ export default function ParentDashboard() {
   const getChildAge = (child: Child): number => {
     return child.birthDate ? calculateAge(child.birthDate) : 0
   }
+  console.log(tasks)
 
   return (
-    <div className="min-h-screen  from-blue-50 to-purple-50 p-4">
+    <div className="min-h-screen  from-blue-50 to-purple-500 p-4">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 mt-20">
           <h1 className="text-3xl font-bold text-purple-600 mb-2">🏆 Panel de Padres</h1>
@@ -301,8 +302,8 @@ export default function ParentDashboard() {
         </div>
 
         {/* Sección de hijos */}
-        <Card className="mb-8">
-          <CardHeader>
+        <Card className="mb-8 bg-linear-to-r from-blue-300 to-purple-300">
+          <CardHeader >
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
@@ -322,7 +323,7 @@ export default function ParentDashboard() {
           </CardHeader>
           
           {showChildForm && (
-            <CardContent className="border-t">
+            <CardContent className="border-t ">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="child-name">Nombre Completo</Label>
@@ -469,9 +470,9 @@ export default function ParentDashboard() {
                 <p className="text-sm text-gray-400">Haz clic en "Agregar Hijo" para comenzar</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {children.map(child => (
-                  <Card key={child.id} className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+                  <Card key={child.id} className="bg-linear-to-t hover:shadow-xl/30 duration-250 from-green-100 to-slate-100  border-purple-200">
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -486,6 +487,16 @@ export default function ParentDashboard() {
                         <div className="text-2xl font-bold text-purple-600">{child.points}</div>
                         <p className="text-sm text-gray-600">puntos acumulados</p>
                         <p className="text-sm text-gray-500">Edad: {getChildAge(child)} años</p>
+                        <p>Tareas pendientes</p>
+                        {tasks.filter(task => task.childId === child.id && !task.completed).length === 0 ? (
+                          <p className="text-sm text-gray-500">No hay tareas pendientes</p>
+                        ) : (
+                          <ul className="list-disc list-inside text-sm text-gray-700">
+                            {tasks.filter(task => task.childId === child.id && !task.completed).map(task => (
+                              <li key={task.id}>{task.title} - {task.points} pts</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
@@ -497,7 +508,7 @@ export default function ParentDashboard() {
 
         {/* Crear nueva tarea - Solo mostrar si hay hijos */}
         {children.length > 0 && (
-          <Card className="mb-8">
+          <Card className="mb-8 clear-start bg-linear-to-r from-blue-300 to-purple-300">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
@@ -579,7 +590,7 @@ export default function ParentDashboard() {
 
         {/* Lista de tareas - Solo mostrar si hay hijos */}
         {children.length > 0 && (
-          <Card>
+          <Card className='bg-linear-to-r from-blue-300 to-purple-300'>
             <CardHeader>
               <CardTitle>📋 Tareas Activas</CardTitle>
               <CardDescription>Revisa y gestiona las tareas asignadas</CardDescription>
@@ -589,8 +600,8 @@ export default function ParentDashboard() {
                 {tasks.length === 0 ? (
                   <p className="text-center text-gray-500 py-8">No hay tareas asignadas todavía</p>
                 ) : (
-                  tasks.map(task => (
-                    <div key={task.id} className="border rounded-lg p-4 bg-white">
+                  tasks.map((task,key) => (
+                    <div key={task.id} className="border rounded-lg p-4 bg-white bg-linear-to-t from-orange-200   to-slate-100">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
@@ -607,8 +618,12 @@ export default function ParentDashboard() {
                           </div>
                           {task.description && (
                             <p className="text-sm text-gray-600 mb-2">{task.description}</p>
-                          )}
-                          <p className="text-sm text-gray-500">Asignada a: {task.childName}</p>
+                          )}{
+                            tasks && (
+                                <p className="text-sm text-gray-500">Asignada a: {tasks[key].child.name}</p>
+                            )
+                          }
+                        
                         </div>
                         
                         <div className="flex gap-2 ml-4">

@@ -19,27 +19,26 @@ interface AppLayoutProps {
 
 export default function AppLayout({ user, onLogout }: AppLayoutProps) {
   return (
-    <div>
+    <div className='bg-slate-400'>
       {/* Header */}
       <header className="bg-linear-to-r from-red-200/50 to-indigo-400/50 fixed min-w-screen backdrop-blur-[5px] ">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl font-bold text-purple-600">🌟 Tareas de casa</h1>
+              <h1 className="text-1xl lg-text-3xl font-bold text-purple-600">🌟 Tareas de casa</h1>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-indigo-400 text-4xl">{user.name}</span>
+                <span className="font-bold text-indigo-400 text-2xl md-text-4xl">{user.name}</span>
                 {user.role !== 'PARENT'&& (
                   <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm flex items-center gap-1">
                     ⭐ {user.points} puntos
                   </span>
                 )}
               </div>
-            </div>
-            
+            </div>            
             <Button 
               onClick={onLogout}
               variant="outline"
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center gap-2 cursor-pointer w-[85px] bg-slate-800 text-slate-200 text-[12px]"
             >
               Cerrar Sesión
             </Button>

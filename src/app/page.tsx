@@ -130,7 +130,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen  from-blue-50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-r from-blue-300 to-purple-300 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-purple-600 mb-2">🌟 Tareas Mágicas</h1>
