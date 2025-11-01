@@ -293,9 +293,9 @@ export default function ParentDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+    <div className="min-h-screen  from-blue-50 to-purple-50 p-4">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-8 mt-20">
           <h1 className="text-3xl font-bold text-purple-600 mb-2">🏆 Panel de Padres</h1>
           <p className="text-gray-600">Gestiona las tareas y recompensas de tus hijos</p>
         </div>
@@ -402,7 +402,7 @@ export default function ParentDashboard() {
                       setNewChild({...newChild, birthDate: e.target.value})
                       if (e.target.value) {
                         const error = validateBirthDate(e.target.value)
-                        setBirthDateError(error)
+                        setBirthDateError("error")
                       } else {
                         setBirthDateError('')
                       }
