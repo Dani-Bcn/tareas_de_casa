@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  email          String?  @unique
+  username       String?  @unique
+  name           String
+  password       String
+  role           UserRole @default(CHILD)
+  parentId       String?
+  points         Int      @default(0)
+  birthDate      DateTime?
+  gender         Gender?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  parent   User?      @relation("ParentChild", fields: [parentId], references: [id])
+  children User[]     @relation("ParentChild")
+  childTasks  Task[]  @relation("ChildTasks")
+  parentTasks Task[]  @relation("ParentTasks")
+  rewards  Reward[]
+
+  @@map("users")
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  points      Int        @default(10)
+  completed   Boolean    @default(false)
+  childId     String
+  parentId    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  child  User @relation("ChildTasks", fields: [childId], references: [id], onDelete: Cascade)
+  parent User @relation("ParentTasks", fields: [parentId], references: [id], onDelete: Cascade)
+
+  @@map("tasks")
+}
+
+model Reward {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  cost        Int
+  claimed     Boolean    @default(false)
+  childId     String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  child User @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@map("rewards")
+}
+
+enum UserRole {
+  PARENT
+  CHILD
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
