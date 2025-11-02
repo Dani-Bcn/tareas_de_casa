@@ -168,7 +168,7 @@ export default function ChildDashboard() {
     <div className="min-h-screen  from-pink-50 to-blue-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-purple-600 mb-2 mt-20">🌟 Mis Tareas</h1>
+          <h1 className="text-3xl font-bold text-purple-600 mb-2 mt-28">🌟 Mis Tareas</h1>
           <p className="text-gray-600">
             ¡Hola {user.name}! 
             <span className="ml-2 text-2xl">{getGenderIcon(user.gender)}</span>

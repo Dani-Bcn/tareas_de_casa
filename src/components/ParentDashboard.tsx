@@ -408,7 +408,7 @@ export default function ParentDashboard() {
                       setNewChild({...newChild, birthDate: e.target.value})
                       if (e.target.value) {
                         const error = validateBirthDate(e.target.value)
-                        setBirthDateError(error)
+                        setBirthDateError(error || '')
                       } else {
                         setBirthDateError('')
                       }
