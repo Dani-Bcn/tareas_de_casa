@@ -14,19 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tareas de casa",
-  description: "Tareas de casa y recompensas",
-  keywords: ["Tareas", "casa", "recompnsas", "deberes","niños","familia", "organización","puntajes","motivación"],
-  authors: [{ name: "Dani" }],
+  title: "Z.ai Code Scaffold - AI-Powered Development",
+  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
+  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
+  authors: [{ name: "Z.ai Team" }],
   icons: {
-    icon: "/tareas.ico",
+    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "Tareas de casa",
-    description: "Tareas de casa y recompensas",
-    url: "https://tareas-de-casa.vercel.app/",
-    siteName: "Tareas de casa",
+    title: "Z.ai Code Scaffold",
+    description: "AI-powered development with modern React stack",
+    url: "https://chat.z.ai",
+    siteName: "Z.ai",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Z.ai Code Scaffold",
+    description: "AI-powered development with modern React stack",
   },
 };
 
