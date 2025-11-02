@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ["Tareas", "casa", "recompnsas", "deberes","niños","familia", "organización","puntajes","motivación"],
   authors: [{ name: "Dani" }],
   icons: {
-    icon: "/tareas.ico",
+    icon: "/favicon.ico",
   },
   openGraph: {
     title: "Tareas de casa",
