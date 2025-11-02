@@ -408,11 +408,12 @@ export default function ParentDashboard() {
                       setNewChild({...newChild, birthDate: e.target.value})
                       if (e.target.value) {
                         const error = validateBirthDate(e.target.value)
-                        setBirthDateError("error")
+                        setBirthDateError(error)
                       } else {
                         setBirthDateError('')
                       }
                     }}
+                       
                     max={new Date().toISOString().split('T')[0]} // Máximo hoy
                     className={birthDateError ? 'border-red-500' : ''}
                   />
