@@ -133,24 +133,21 @@ export default function Home() {
     <div className="min-h-screen bg-linear-to-r from-blue-300 to-purple-300 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-600 mb-2">🌟 Tareas de casa</h1>
-          <p className="text-gray-600">¡Completa tareas y gana recompensas!</p>
+          <h1 className="text-4xl font-bold text-purple-600 mb-2">🌟 Tareas de casa</h1>         
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-center">Bienvenido</CardTitle>
+        <div className="bg-white/25 backdrop-blur-md rounded-2xl shadow-lg p-6">
+          <CardHeader>          
             <CardDescription className="text-center">
-              Inicia sesión o regístrate como padre/madre para comenzar
+              Inicia sesión o regístrate para continuar
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="login" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
-                <TabsTrigger value="register">Registrarse</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 ">
+                <TabsTrigger className='cursor-pointer' value="login">Iniciar Sesión</TabsTrigger>
+                <TabsTrigger className='cursor-pointer' value="register">Registrarse</TabsTrigger>
               </TabsList>
-
               <TabsContent value="login">
                 <div className="space-y-4">
                   {/* Selector de tipo de login */}
@@ -160,7 +157,7 @@ export default function Home() {
                       variant={loginType === 'parent' ? 'default' : 'ghost'}
                       size="sm"
                       onClick={() => setLoginType('parent')}
-                      className="flex-1"
+                      className="flex-1 cursor-pointer"
                     >
                       👨‍👩‍👧‍👦 Padre/Madre
                     </Button>
@@ -169,12 +166,11 @@ export default function Home() {
                       variant={loginType === 'child' ? 'default' : 'ghost'}
                       size="sm"
                       onClick={() => setLoginType('child')}
-                      className="flex-1"
+                      className="flex-1 cursor-pointer"
                     >
                       👶 Niño/a
                     </Button>
                   </div>
-
                   <form onSubmit={handleLogin} className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="identifier">
@@ -198,7 +194,7 @@ export default function Home() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full" disabled={isLoading}>
+                    <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
                       {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
                     </Button>
                   </form>
@@ -237,19 +233,19 @@ export default function Home() {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
                     {isLoading ? 'Registrando...' : 'Registrarse como Padre/Madre'}
                   </Button>
                 </form>
               </TabsContent>
             </Tabs>
           </CardContent>
-        </Card>
+        </div>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          <p className="mb-2">🏆 Este formulario es solo para padres/madres</p>
-          <p>🎈 Los niños usan la cuenta que sus padres crean para ellos</p>
-          <p className="mt-2 text-xs text-gray-500">Después de registrarte, podrás agregar a tus hijos</p>
+          <p className="mb-2">🏆 L@s @adres  </p>
+          <p>🎈 L@s niñ@s usan la cuenta que sus @adres crean para ell@s</p>
+          <p className="mt-2 text-xs text-gray-500">Después de registrarte, podrás agregar a tus hij@s</p>
         </div>
       </div>
     </div>

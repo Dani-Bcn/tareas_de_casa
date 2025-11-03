@@ -35,7 +35,6 @@ export async function GET(request: NextRequest) {
         username: true,
         points: true,
         birthDate: true,
-        gender: true,
         createdAt: true
       },
       orderBy: { name: 'asc' }
@@ -54,9 +53,9 @@ export async function GET(request: NextRequest) {
 // POST add child to parent
 export async function POST(request: NextRequest) {
   try {
-    const { name, username, password, birthDate, gender, parentId } = await request.json()
+    const { name, username, password, birthDate,  parentId } = await request.json()
 
-    if (!name || !username || !password || !birthDate || !gender || !parentId) {
+    if (!name || !username || !password || !birthDate || !parentId) {
       return NextResponse.json(
         { error: 'Todos los campos son requeridos' },
         { status: 400 }
@@ -170,14 +169,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate gender
-    const validGenders = ['MALE', 'FEMALE', 'OTHER']
-    if (!validGenders.includes(gender)) {
-      return NextResponse.json(
-        { error: 'Género no válido' },
-        { status: 400 }
-      )
-    }
+  
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10)
@@ -191,7 +183,6 @@ export async function POST(request: NextRequest) {
         role: 'CHILD',
         parentId: parentId,
         birthDate: new Date(birthDate),
-        gender: gender
       },
       select: {
         id: true,
@@ -199,7 +190,6 @@ export async function POST(request: NextRequest) {
         username: true,
         points: true,
         birthDate: true,
-        gender: true,
         createdAt: true
       }
     })

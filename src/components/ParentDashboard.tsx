@@ -31,7 +31,6 @@ interface Child {
   username: string
   points: number
   birthDate?: string
-  gender?: string
 }
 
 export default function ParentDashboard() {
@@ -50,7 +49,6 @@ export default function ParentDashboard() {
     username: '',
     password: '',
     birthDate: '',
-    gender: ''
   })
   const [passwordError, setPasswordError] = useState('')
   const [isPasswordValid, setIsPasswordValid] = useState(false)
@@ -142,7 +140,7 @@ export default function ParentDashboard() {
   }
 
   const handleCreateChild = async () => {
-    if (!newChild.name || !newChild.username || !newChild.password || !newChild.birthDate || !newChild.gender) {
+    if (!newChild.name || !newChild.username || !newChild.password || !newChild.birthDate ) {
       alert('Por favor completa todos los campos')
       return
     }
@@ -173,7 +171,6 @@ export default function ParentDashboard() {
           username: newChild.username,
           password: newChild.password,
           birthDate: newChild.birthDate,
-          gender: newChild.gender,
           parentId: user.id
         }),
       })
@@ -183,7 +180,7 @@ export default function ParentDashboard() {
       if (response.ok) {
         const childAge = calculateAge(newChild.birthDate)
         alert(`¡Hijo agregado exitosamente!\n\nDatos para iniciar sesión:\nUsuario: ${newChild.username}\nContraseña: ${newChild.password}\nEdad: ${childAge} años`)
-        setNewChild({ name: '', username: '', password: '', birthDate: '', gender: '' })
+        setNewChild({ name: '', username: '', password: '', birthDate: '' })
         setPasswordError('')
         setIsPasswordValid(false)
         setBirthDateError('')
@@ -284,13 +281,7 @@ export default function ParentDashboard() {
     }
   }
 
-  const getGenderIcon = (gender?: string) => {
-    switch (gender) {
-      case 'MALE': return '👦'
-      case 'FEMALE': return '👧'
-      default: return '🧒'
-    }
-  }
+ 
 
   const getChildAge = (child: Child): number => {
     return child.birthDate ? calculateAge(child.birthDate) : 0
@@ -299,7 +290,7 @@ export default function ParentDashboard() {
   console.log(tasks)
 
   return (
-    <div className="min-h-screen  from-blue-50 to-purple-500 p-4">
+    <div className="min-h-screen  p-4 bg-linear-to-r  from-blue-300/50 to-purple-300/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 mt-20">
           <h1 className="text-3xl font-bold text-purple-600 mb-2">🏆 Panel de Padres</h1>
@@ -307,12 +298,12 @@ export default function ParentDashboard() {
         </div>
 
         {/* Sección de hijos */}
-        <Card className="mb-8 bg-linear-to-r from-blue-300 to-purple-300">
-          <CardHeader >
+        <div className="mb-8 p-12 bg-white/50 rounded-4xl  backdrop-opacity-75">
+          <CardHeader  >
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
-                  <Baby className="w-5 h-5" />
+                  <Baby className="w-6 h-6" />
                   Mis Hijos
                 </CardTitle>
                 <CardDescription>Agrega y gestiona las cuentas de tus hijos</CardDescription>
@@ -328,10 +319,10 @@ export default function ParentDashboard() {
           </CardHeader>
           
           {showChildForm && (
-            <CardContent className="border-t ">
+            <div className="border-t  p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="child-name">Nombre Completo</Label>
+                <div className='space-y-2'>
+                  <Label >Nombre Completo</Label>
                   <Input
                     value={newChild.name}
                     onChange={(e) => setNewChild({...newChild, name: e.target.value})}
@@ -424,21 +415,8 @@ export default function ParentDashboard() {
                   )}
                   <p className="text-xs text-gray-500">Esta fecha se usará para calcular la edad automáticamente</p>
                 </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="child-gender">Género</Label>
-                  <Select value={newChild.gender} onValueChange={(value) => setNewChild({...newChild, gender: value})}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecciona género" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="MALE">👦 Niño</SelectItem>
-                      <SelectItem value="FEMALE">👧 Niña</SelectItem>
-                      <SelectItem value="OTHER">🧒 Otro</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
+                 
+             
                 <div className="md:col-span-2 flex gap-2">
                   <Button 
                     onClick={handleCreateChild} 
@@ -447,7 +425,6 @@ export default function ParentDashboard() {
                       !newChild.username || 
                       !newChild.password || 
                       !newChild.birthDate || 
-                      !newChild.gender ||
                       !!passwordError ||
                       !!birthDateError ||
                       !isPasswordValid
@@ -465,7 +442,7 @@ export default function ParentDashboard() {
                   </Button>
                 </div>
               </div>
-            </CardContent>
+            </div>
           )}
 
           <CardContent>
@@ -482,7 +459,7 @@ export default function ParentDashboard() {
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-2xl">{getGenderIcon(child.gender)}</span>
+                    
                           <span>{child.name}</span>
                         </div>
                         <Trophy className="w-5 h-5 text-yellow-500" />
@@ -510,7 +487,7 @@ export default function ParentDashboard() {
               </div>
             )}
           </CardContent>
-        </Card>
+        </div>
 
         {/* Crear nueva tarea - Solo mostrar si hay hijos */}
         {children.length > 0 && (
@@ -543,7 +520,7 @@ export default function ParentDashboard() {
                       <SelectContent>
                         {children.map(child => (
                           <SelectItem key={child.id} value={child.id}>
-                            {getGenderIcon(child.gender)} {child.name}
+                         
                           </SelectItem>
                         ))}
                       </SelectContent>

@@ -30,7 +30,6 @@ interface Child {
   username: string
   points: number
   birthDate?: string
-  gender?: string
 }
 
 export default function ChildDashboard() {
@@ -134,13 +133,7 @@ export default function ChildDashboard() {
     }
   }
 
-  const getGenderIcon = (gender?: string) => {
-    switch (gender) {
-      case 'MALE': return '👦'
-      case 'FEMALE': return '👧'
-      default: return '🧒'
-    }
-  }
+
 
   const getChildAge = (): number => {
     return user?.birthDate ? calculateAge(user.birthDate) : 0
@@ -171,7 +164,7 @@ export default function ChildDashboard() {
           <h1 className="text-3xl font-bold text-purple-600 mb-2 mt-28">🌟 Mis Tareas</h1>
           <p className="text-gray-600">
             ¡Hola {user.name}! 
-            <span className="ml-2 text-2xl">{getGenderIcon(user.gender)}</span>
+         
             {user.birthDate && (
               <span className="ml-2">
                 <Cake className="w-4 h-4 inline mr-1" />

@@ -24,7 +24,6 @@ model User {
   parentId       String?
   points         Int      @default(0)
   birthDate      DateTime?
-  gender         Gender?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -72,10 +71,4 @@ model Reward {
 enum UserRole {
   PARENT
   CHILD
-}
-
-enum Gender {
-  MALE
-  FEMALE
-  OTHER
 }

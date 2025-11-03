@@ -19,9 +19,11 @@ interface AppLayoutProps {
 
 export default function AppLayout({ user, onLogout }: AppLayoutProps) {
   return (
-    <div className='bg-slate-400'>
+    
+    <div >
+ 
       {/* Header */}
-      <header className="bg-linear-to-r from-red-200/50 to-indigo-400/50 fixed min-w-screen backdrop-blur-[5px] ">
+      <header className="bg-slate-300/0 fixed min-w-screen backdrop-blur-[10px] z-50 ">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
