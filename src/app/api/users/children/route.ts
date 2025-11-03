@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     if (!parent) {
       return NextResponse.json(
-        { error: 'Padre no encontrado' },
+        { error: '@adre no encontrado' },
         { status: 404 }
       )
     }
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ children })
   } catch (error) {
-    console.error('Error obteniendo hijos:', error)
+    console.error('Error obteniendo hij@s:', error)
     return NextResponse.json(
       { error: 'Error interno del servidor' },
       { status: 500 }
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
 
     if (!parent) {
       return NextResponse.json(
-        { error: 'Padre no encontrado' },
+        { error: '@adre no encontrado' },
         { status: 404 }
       )
     }
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'El nombre de usuario ya está en uso' },
+        { error: 'El nombre de usuari@ ya está en uso' },
         { status: 400 }
       )
     }
@@ -196,10 +196,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ 
       child,
-      message: 'Hijo agregado exitosamente'
+      message: 'hij@ agregado exitosamente'
     }, { status: 201 })
   } catch (error) {
-    console.error('Error agregando hijo:', error)
+    console.error('Error agregando hij@:', error)
     return NextResponse.json(
       { error: 'Error interno del servidor' },
       { status: 500 }

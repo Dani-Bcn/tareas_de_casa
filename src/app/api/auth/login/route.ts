@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     let user
 
     if (loginType === 'parent') {
-      // Login para padres: buscar por email
+      // Login para @adres: buscar por email
       user = await db.user.findUnique({
         where: { 
           email: identifier,

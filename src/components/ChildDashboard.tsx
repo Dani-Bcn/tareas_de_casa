@@ -37,7 +37,7 @@ export default function ChildDashboard() {
   const [rewards, setRewards] = useState<Reward[]>([])
   const [user, setUser] = useState<Child | null>(null)
 
-  // Cargar datos del usuario desde localStorage y API
+  // Cargar datos del usuari@ desde localStorage y API
   useEffect(() => {
     const savedUser = localStorage.getItem('user')
     if (savedUser) {
@@ -93,7 +93,7 @@ export default function ChildDashboard() {
           setTasks(tasks.map(t => 
             t.id === taskId ? data.task : t
           ))
-          // Actualizar puntos del usuario
+          // Actualizar puntos del usuari@
           setUser(prev => prev ? {...prev, points: prev.points + task.points} : null)
           alert(`¡Tarea completada! +${task.points} puntos`)
         }
@@ -123,7 +123,7 @@ export default function ChildDashboard() {
           setRewards(rewards.map(r => 
             r.id === rewardId ? data.reward : r
           ))
-          // Actualizar puntos del usuario
+          // Actualizar puntos del usuari@
           setUser(prev => prev ? {...prev, points: prev.points - reward.cost} : null)
           alert(`¡Felicidades! Has canjeado: ${reward.title}`)
         }
@@ -173,7 +173,7 @@ export default function ChildDashboard() {
             )}
           </p>
           <p className="text-sm text-gray-500 mt-1">
-            Usuario: <span className="font-mono bg-purple-100 px-2 py-1 rounded">{user.username}</span>
+            usuari@: <span className="font-mono bg-purple-100 px-2 py-1 rounded">{user.username}</span>
           </p>
           {user.birthDate && (
             <p className="text-xs text-gray-400 mt-1">

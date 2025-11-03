@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'El usuario ya existe' },
+        { error: 'El usuari@ ya existe' },
         { status: 400 }
       )
     }
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     const { password: _, ...userWithoutPassword } = user
 
     return NextResponse.json(
-      { message: 'Usuario creado exitosamente', user: userWithoutPassword },
+      { message: 'usuari@ creado exitosamente', user: userWithoutPassword },
       { status: 201 }
     )
   } catch (error) {

@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
 
     if (!parent) {
       return NextResponse.json(
-        { error: 'Padre no encontrado o no autorizado' },
+        { error: '@adre no encontrado o no autorizado' },
         { status: 404 }
       )
     }
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
 
     if (!child) {
       return NextResponse.json(
-        { error: 'Hijo no encontrado o no pertenece a este padre' },
+        { error: 'hij@ no encontrado o no pertenece a este @adre' },
         { status: 404 }
       )
     }

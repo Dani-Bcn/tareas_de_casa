@@ -88,14 +88,14 @@ export default function Home() {
           name, 
           email, 
           password, 
-          role: 'parent' // Siempre es padre
+          role: 'parent' // Siempre es @adre
         }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        alert('¡Registro exitoso! Ahora puedes iniciar sesión y agregar a tus hijos')
+        alert('¡Registro exitoso! Ahora puedes iniciar sesión y agregar a tus hij@s')
         // Switch to login tab
         const loginTab = document.querySelector('[value="login"]') as HTMLElement
         loginTab?.click()
@@ -159,7 +159,7 @@ export default function Home() {
                       onClick={() => setLoginType('parent')}
                       className="flex-1 cursor-pointer"
                     >
-                      👨‍👩‍👧‍👦 Padre/Madre
+                      👨‍👩‍👧‍👦 @adre
                     </Button>
                     <Button
                       type="button"
@@ -168,19 +168,19 @@ export default function Home() {
                       onClick={() => setLoginType('child')}
                       className="flex-1 cursor-pointer"
                     >
-                      👶 Niño/a
+                      👶 Niñ@
                     </Button>
                   </div>
                   <form onSubmit={handleLogin} className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="identifier">
-                        {loginType === 'parent' ? 'Correo Electrónico' : 'Nombre de Usuario'}
+                        {loginType === 'parent' ? 'Correo Electrónico' : 'Nombre de usuari@'}
                       </Label>
                       <Input
                         id="identifier"
                         name="identifier"
                         type={loginType === 'parent' ? 'email' : 'text'}
-                        placeholder={loginType === 'parent' ? 'tu@email.com' : 'tu_usuario'}
+                        placeholder={loginType === 'parent' ? 'tu@email.com' : 'tu_usuari@'}
                         required
                       />
                     </div>
@@ -234,7 +234,7 @@ export default function Home() {
                     />
                   </div>
                   <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
-                    {isLoading ? 'Registrando...' : 'Registrarse como Padre/Madre'}
+                    {isLoading ? 'Registrando...' : 'Registrarse como @adre'}
                   </Button>
                 </form>
               </TabsContent>

@@ -54,7 +54,7 @@ export default function ParentDashboard() {
   const [isPasswordValid, setIsPasswordValid] = useState(false)
   const [birthDateError, setBirthDateError] = useState('')
 
-  // Cargar hijos desde la API
+  // Cargar hij@s desde la API
   useEffect(() => {
     loadChildren()
   }, [])
@@ -68,7 +68,7 @@ export default function ParentDashboard() {
         setChildren(data.children)
       }
     } catch (error) {
-      console.error('Error cargando hijos:', error)
+      console.error('Error cargando hij@s:', error)
     }
   }
 
@@ -179,7 +179,7 @@ export default function ParentDashboard() {
 
       if (response.ok) {
         const childAge = calculateAge(newChild.birthDate)
-        alert(`¡Hijo agregado exitosamente!\n\nDatos para iniciar sesión:\nUsuario: ${newChild.username}\nContraseña: ${newChild.password}\nEdad: ${childAge} años`)
+        alert(`¡Hij@ agregad@ exitosamente!\n\nDatos para iniciar sesión:\nusuari@: ${newChild.username}\nContraseña: ${newChild.password}\nEdad: ${childAge} años`)
         setNewChild({ name: '', username: '', password: '', birthDate: '' })
         setPasswordError('')
         setIsPasswordValid(false)
@@ -187,7 +187,7 @@ export default function ParentDashboard() {
         setShowChildForm(false)
         loadChildren()
       } else {
-        alert(data.error || 'Error al agregar hijo')
+        alert(data.error || 'Error al agregar hij@')
       }
     } catch (error) {
       alert('Error de conexión')
@@ -250,7 +250,7 @@ export default function ParentDashboard() {
         setTasks(tasks.map(task => 
           task.id === taskId ? data.task : task
         ))
-        // Recargar hijos para actualizar puntos
+        // Recargar hij@s para actualizar puntos
         loadChildren()
       }
     } catch (error) {
@@ -293,27 +293,27 @@ export default function ParentDashboard() {
     <div className="min-h-screen  p-4 bg-linear-to-r  from-blue-300/50 to-purple-300/50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 mt-20">
-          <h1 className="text-3xl font-bold text-purple-600 mb-2">🏆 Panel de Padres</h1>
-          <p className="text-gray-600">Gestiona las tareas y recompensas de tus hijos</p>
+          <h1 className="text-3xl font-bold text-purple-600 mb-2">🏆 Panel de @adres</h1>
+          <p className="text-gray-600">Gestiona las tareas y recompensas de tus hij@s</p>
         </div>
 
-        {/* Sección de hijos */}
+        {/* Sección de hij@s */}
         <div className="mb-8 p-12 bg-white/50 rounded-4xl  backdrop-opacity-75">
           <CardHeader  >
             <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4">
               <div className='flex flex-col justify-center text-center'>
                 <CardTitle className="flex items-center gap-2">
                  
-                  <p className='w-full'>Mis Hijos</p>
+                  <p className='w-full'>Mis hij@s</p>
                 </CardTitle>
-                <CardDescription className='text-center md:text-start'>Agrega y gestiona las cuentas de tus hijos</CardDescription>
+                <CardDescription className='text-center md:text-start'>Agrega y gestiona las cuentas de tus hij@s</CardDescription>
               </div>
               <Button 
                 onClick={() => setShowChildForm(!showChildForm)}
                 className="flex items-center gap-2"
               >
                 <UserPlus className="w-4 h-4" />
-                Agregar Hijo
+                Agregar Hij@
               </Button>
             </div>
           </CardHeader>
@@ -331,13 +331,13 @@ export default function ParentDashboard() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="child-username">Nombre de Usuario</Label>
+                  <Label htmlFor="child-username">Nombre de usuari@</Label>
                   <Input
                     value={newChild.username}
                     onChange={(e) => setNewChild({...newChild, username: e.target.value})}
                     placeholder="Ej: ana123"
                   />
-                  <p className="text-xs text-gray-500">Este será el usuario para iniciar sesión</p>
+                  <p className="text-xs text-gray-500">Este será el usuari@ para iniciar sesión</p>
                 </div>
                 
                 <div className="space-y-2">
@@ -364,7 +364,7 @@ export default function ParentDashboard() {
                     className={passwordError ? 'border-red-500' : ''}
                   />
                   <div className="space-y-1">
-                    <p className="text-xs text-gray-500">Dale esta contraseña a tu hijo para que inicie sesión</p>
+                    <p className="text-xs text-gray-500">Dale esta contraseña a tu hij@ para que inicie sesión</p>
                     <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded">
                       <p className="font-medium mb-1">Requisitos de contraseña:</p>
                       <ul className="space-y-1">
@@ -430,7 +430,7 @@ export default function ParentDashboard() {
                       !isPasswordValid
                     }
                   >
-                    Agregar Hijo
+                    Agregar hij@
                   </Button>
                   <Button variant="outline" onClick={() => {
                     setShowChildForm(false)
@@ -449,8 +449,8 @@ export default function ParentDashboard() {
             {children.length === 0 ? (
               <div className="text-center py-8">
                 <Baby className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">No tienes hijos agregados todavía</p>
-                <p className="text-sm text-gray-400 ">Haz clic en "Agregar Hijo" para comenzar</p>
+                <p className="text-gray-500">No tienes hij@s agregados todavía</p>
+                <p className="text-sm text-gray-400 ">Haz clic en "Agregar hij@" para comenzar</p>
               </div>
             ) : (
               <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 duration-500 gap-4">
@@ -489,14 +489,14 @@ export default function ParentDashboard() {
           </CardContent>
         </div>
 
-        {/* Crear nueva tarea - Solo mostrar si hay hijos */}
+        {/* Crear nueva tarea - Solo mostrar si hay hij@s */}
         {children.length > 0 && (
           <Card className="mb-8 clear-start bg-linear-to-r from-blue-300 to-purple-300">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle>📝 Gestión de Tareas</CardTitle>
-                  <CardDescription>Asigna nuevas tareas a tus hijos</CardDescription>
+                  <CardDescription>Asigna nuevas tareas a tus hij@s</CardDescription>
                 </div>
                 <Button 
                   onClick={() => setShowTaskForm(!showTaskForm)}
@@ -512,10 +512,10 @@ export default function ParentDashboard() {
               <CardContent className="border-t">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="child">Hijo</Label>
+                    <Label htmlFor="child">hij@</Label>
                     <Select value={selectedChild} onValueChange={setSelectedChild}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Selecciona un hijo" />
+                        <SelectValue placeholder="Selecciona un hij@" />
                       </SelectTrigger>
                       <SelectContent>
                         {children.map(child => (
@@ -571,7 +571,7 @@ export default function ParentDashboard() {
           </Card>
         )}
 
-        {/* Lista de tareas - Solo mostrar si hay hijos */}
+        {/* Lista de tareas - Solo mostrar si hay hij@s */}
         {children.length > 0 && (
           <Card className='bg-linear-to-r from-blue-300 to-purple-300'>
             <CardHeader>
@@ -636,13 +636,13 @@ export default function ParentDashboard() {
           </Card>
         )}
 
-        {/* Mensaje cuando no hay hijos */}
+        {/* Mensaje cuando no hay hij@s */}
         {children.length === 0 && (
           <Card>
             <CardContent className="text-center py-12">
               <Baby className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-600 mb-2">¡Comienza Agregando un Hijo!</h3>
-              <p className="text-gray-500">Para crear tareas y recompensas, primero necesitas agregar al menos un hijo a tu cuenta.</p>
+              <h3 className="text-lg font-medium text-gray-600 mb-2">¡Comienza Agregando un hij@!</h3>
+              <p className="text-gray-500">Para crear tareas y recompensas, primero necesitas agregar al menos un hij@ a tu cuenta.</p>
             </CardContent>
           </Card>
         )}
