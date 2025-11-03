@@ -300,13 +300,13 @@ export default function ParentDashboard() {
         {/* Sección de hijos */}
         <div className="mb-8 p-12 bg-white/50 rounded-4xl  backdrop-opacity-75">
           <CardHeader  >
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
+              <div className='flex flex-col justify-center text-center'>
                 <CardTitle className="flex items-center gap-2">
-                  <Baby className="w-6 h-6" />
-                  Mis Hijos
+                 
+                  <p className='w-full'>Mis Hijos</p>
                 </CardTitle>
-                <CardDescription>Agrega y gestiona las cuentas de tus hijos</CardDescription>
+                <CardDescription className='text-center md:text-start'>Agrega y gestiona las cuentas de tus hijos</CardDescription>
               </div>
               <Button 
                 onClick={() => setShowChildForm(!showChildForm)}
