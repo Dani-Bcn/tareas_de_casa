@@ -300,7 +300,7 @@ export default function ParentDashboard() {
         {/* Sección de hijos */}
         <div className="mb-8 p-12 bg-white/50 rounded-4xl  backdrop-opacity-75">
           <CardHeader  >
-            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">
               <div className='flex flex-col justify-center text-center'>
                 <CardTitle className="flex items-center gap-2">
                  
