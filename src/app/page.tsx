@@ -243,7 +243,6 @@ export default function Home() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          <p className="mb-2">🏆 L@s @adres  </p>
           <p>🎈 L@s niñ@s usan la cuenta que sus @adres crean para ell@s</p>
           <p className="mt-2 text-xs text-gray-500">Después de registrarte, podrás agregar a tus hij@s</p>
         </div>
