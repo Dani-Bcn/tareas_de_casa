@@ -13,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Check, Star, Trophy, Gift, Target, Baby, Cake } from "lucide-react";
 import { calculateAge } from "@/lib/utils";
-import { obtenerFechaDeTarea } from "@/lib/utils";
 
 interface Task {
   id: string;
@@ -159,9 +158,6 @@ export default function ChildDashboard() {
       </div>
     );
   }
-  {
-    console.log(user);
-  }
 
   return (
     <div className="min-h-screen  from-pink-50 to-blue-50 p-4">
@@ -266,7 +262,7 @@ export default function ChildDashboard() {
                     No tienes tareas asignadas hoy
                   </p>
                   <p className="text-sm text-gray-400">
-                    ¡Pídele a papá o mamá que te asigne algunas!
+                    ¡Pídele a @a@a que te asigne algunas!
                   </p>
                 </div>
               ) : (
@@ -281,7 +277,7 @@ export default function ChildDashboard() {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-start gap-2 mb-2">
                           <h4
                             className={`font-medium ${
                               task.completed ? "line-through text-gray-500" : ""
@@ -289,18 +285,22 @@ export default function ChildDashboard() {
                           >
                             {task.title}
                           </h4>
-                          <Badge
-                            variant={task.completed ? "secondary" : "default"}
-                          >
-                            {task.completed ? "✅ Completada" : "⏳ Pendiente"}
-                          </Badge>
-                          <Badge
-                            variant="outline"
-                            className="flex items-center gap-1"
-                          >
-                            <Star className="w-3 h-3" />
-                            {task.points} pts
-                          </Badge>
+                          <div className="flex flex-wrap gap-2 justify-center">
+                            <Badge
+                              variant={task.completed ? "secondary" : "default"}
+                            >
+                              {task.completed
+                                ? "✅ Completada"
+                                : "⏳ Pendiente"}
+                            </Badge>
+                            <Badge
+                              variant="outline"
+                              className="flex items-center gap-1"
+                            >
+                              <Star className="w-3 h-3" />
+                              {task.points} pts
+                            </Badge>
+                          </div>
                         </div>
                         {task.description && (
                           <p className="text-sm text-gray-600">
@@ -318,17 +318,13 @@ export default function ChildDashboard() {
                           ¡Completar!
                         </Button>
                       )}
-
-                      {task.completed && (
-                        <div className="ml-4 text-green-500 font-bold">
-                          ¡Listo! +{task.points} ⭐
-                        </div>
-                      )}
-                      {task.completed ? null : (
-                        <div className="ml-4 text-sm text-gray-400">
-                          📅 {obtenerFechaDeTarea(new Date().toISOString())}
-                        </div>
-                      )}
+                      <div className="flex-col">
+                        {task.completed && (
+                          <div className="ml-4 text-green-500 font-bold">
+                            ¡Listo! +{task.points} ⭐
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))
@@ -357,7 +353,7 @@ export default function ChildDashboard() {
                     No hay recompensas disponibles
                   </p>
                   <p className="text-sm text-gray-400">
-                    ¡Pídele a papá o mamá que agregue algunas!
+                    ¡Pídele a @a@a que agregue algunas!
                   </p>
                 </div>
               ) : (
