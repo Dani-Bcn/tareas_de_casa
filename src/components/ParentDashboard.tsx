@@ -287,7 +287,7 @@ export default function ParentDashboard() {
     return child.birthDate ? calculateAge(child.birthDate) : 0
   }
   
-  console.log(tasks)
+  console.log(children)
 
   return (
     <div className="min-h-screen  p-4 bg-linear-to-r  from-blue-300/50 to-purple-300/50">
@@ -303,8 +303,6 @@ export default function ParentDashboard() {
             <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4">
               <div className='flex flex-col justify-center text-center'>
                 <CardTitle className="flex items-center gap-2">
-                 
-                  <p className='w-full'>Mis hij@s</p>
                 </CardTitle>
                 <CardDescription className='text-center md:text-start'>Agrega y gestiona las cuentas de tus hij@s</CardDescription>
               </div>
@@ -509,10 +507,10 @@ export default function ParentDashboard() {
             </CardHeader>
             
             {showTaskForm && (
-              <CardContent className="border-t">
+              <div className="border-t p-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="child">hij@</Label>
+                    <label htmlFor="child">hij@</label>
                     <Select value={selectedChild} onValueChange={setSelectedChild}>
                       <SelectTrigger>
                         <SelectValue placeholder="Selecciona un hij@" />
@@ -520,7 +518,9 @@ export default function ParentDashboard() {
                       <SelectContent>
                         {children.map(child => (
                           <SelectItem key={child.id} value={child.id}>
-                         
+                         <p>{
+child.name
+                          }</p>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -566,7 +566,7 @@ export default function ParentDashboard() {
                     </Button>
                   </div>
                 </div>
-              </CardContent>
+              </div>
             )}
           </Card>
         )}

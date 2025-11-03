@@ -3,6 +3,7 @@
 import ParentDashboard from './ParentDashboard'
 import ChildDashboard from './ChildDashboard'
 import { Button } from '@/components/ui/button'
+import { use } from 'react'
 
 interface User {
   id: string
@@ -27,7 +28,8 @@ export default function AppLayout({ user, onLogout }: AppLayoutProps) {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl lg-text-3xl font-bold text-purple-600">🌟 Tareas de casa</h1>
+              <h1 className=" lg-text-3xl font-bold text-purple-600">🌟 Tareas de casa</h1>
+              {user.role === 'PARENT' ? <h3 className='text-2xl text-purple-500 font-bold '>{user.name}</h3>:null}
               
             </div>            
             <Button 
@@ -37,7 +39,7 @@ export default function AppLayout({ user, onLogout }: AppLayoutProps) {
             >
               Cerrar Sesión
             </Button>
-          </div>
+                                            </div>
         </div>
       </header>
 
