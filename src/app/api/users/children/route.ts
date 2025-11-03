@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
       minAge.setFullYear(minAge.getFullYear() - 3)
       
       if (birth > minAge) {
-        return 'El niño debe tener al menos 3 años'
+        return 'L@s niñ@s deben tener al menos 3 años'
       }
       
       // Verificar que no sea mayor de 18 años
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
       maxChildAge.setFullYear(maxChildAge.getFullYear() - 18)
       
       if (birth < maxChildAge) {
-        return 'La edad máxima para niños es 18 años'
+        return 'La edad máxima para niñ@s es 18 años'
       }
       
       return null
