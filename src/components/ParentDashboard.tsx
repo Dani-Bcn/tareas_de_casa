@@ -298,7 +298,7 @@ export default function ParentDashboard() {
         </div>
 
         {/* Sección de hij@s */}
-        <div className="mb-8 p-2 py-4 bg-white/50 rounded-4xl  backdrop-opacity-75">
+        <div className="mb-8 py-6 bg-white/50 rounded-4xl  backdrop-opacity-75">
           <CardHeader  >
             <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4">
               <div className='flex flex-col justify-center text-center'>
@@ -468,7 +468,7 @@ export default function ParentDashboard() {
                     <CardContent>
                       <div className="space-y-2">
                         <div className="text-2xl font-bold text-purple-600">{child.points}</div>
-                        <p className="text-sm text-gray-600">puntos acumulados</p>
+                        <p className="text-sm text-gray-600">Puntos acumulados</p>
                         <p className="text-sm text-gray-500">Edad: {getChildAge(child)} años</p>
                         <p>Tareas pendientes</p>
                         {tasks.filter(task => task.childId === child.id && !task.completed).length === 0 ? (
