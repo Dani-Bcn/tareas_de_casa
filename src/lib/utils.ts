@@ -67,3 +67,14 @@ export function validateBirthDate(birthDate: string): string | null {
   
   return null
 }
+
+const obtenerFechaDeTarea = (taskDate: string): string => {
+  const fecha = new Date(taskDate)
+  return fecha.toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
+export { obtenerFechaDeTarea }
