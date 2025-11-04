@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 /**
  * Calcula la edad a partir de una fecha de nacimiento
  * @param birthDate - Fecha de nacimiento (Date o string)
@@ -67,6 +69,17 @@ export function validateBirthDate(birthDate: string): string | null {
   
   return null
 }
+
+export const obtenerFecha=(()=>{
+  const fecha=new Date();
+  const dia=fecha.getDate().toString().padStart(2,'0');
+  const mes=(fecha.getMonth()+1).toString().padStart(2,'0');
+  const año=fecha.getFullYear();
+  console.log(`${año}-${mes}-${dia}`);
+  return `${año}-${mes}-${dia}`;
+})
+
+
 
 
 

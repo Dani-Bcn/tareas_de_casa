@@ -12,7 +12,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Check, Star, Trophy, Gift, Target, Baby, Cake } from "lucide-react";
-import { calculateAge } from "@/lib/utils";
+import { calculateAge,obtenerFecha } from "@/lib/utils";
+
+
 
 interface Task {
   id: string;
@@ -79,6 +81,7 @@ export default function ChildDashboard() {
   };
 
   const completeTask = async (taskId: string) => {
+   
     const task = tasks.find((t) => t.id === taskId);
     if (task && !task.completed && user) {
       try {
@@ -311,7 +314,7 @@ export default function ChildDashboard() {
 
                       {!task.completed && (
                         <Button
-                          onClick={() => completeTask(task.id)}
+                          onClick={() => (completeTask(task.id), obtenerFecha())}
                           className="ml-4 bg-green-500 hover:bg-green-600"
                         >
                           <Check className="w-4 h-4 mr-2" />
@@ -324,6 +327,7 @@ export default function ChildDashboard() {
                             ¡Listo! +{task.points} ⭐
                           </div>
                         )}
+                       
                       </div>
                     </div>
                   </div>
